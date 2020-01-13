@@ -34,9 +34,11 @@ function skip() {
   video.currentTime += parseFloat(this.dataset.skip);
 }
 
-function handleRangeUpdate() {
-  // this.name will be either "volume" or "playbackRate"
-  video[this.name] = this.value;
+function handleRangeUpdate(e) {
+  const { name, value } = e.target
+  video[name] = value;
+  // when using change event with bound access to "this"
+  // video[this.name] = this.value;
 }
 
 function handleProgress() {
@@ -65,10 +67,12 @@ skipButtons.forEach((sb) => {
 // make sure event type is change here - click would be the value on click
 // can change this to update in realtime by using mousemove event and flags like canvas example
 ranges.forEach((rb) => {
-  rb.addEventListener('change', handleRangeUpdate);
+  rb.addEventListener('mousemove', (e) => {mousedown && handleRangeUpdate(e)});
+  rb.addEventListener('mousedown', () => mousedown = true);
+  rb.addEventListener('mouseup', () => mousedown = false);
 });
 
 // progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (e) => {mousedown && scrub(e)});
-progress.addEventListener('mousedown', () => {mousedown = true});
+progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
