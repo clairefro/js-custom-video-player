@@ -22,6 +22,7 @@ body {
   background-size: cover;
   align-items: center;
   justify-content: center;
+  font-family: Arial;
 }
 
 .player {
@@ -56,7 +57,7 @@ body {
   outline: 0;
   padding: 0;
   cursor: pointer;
-  max-width: 50px;
+  max-width: 35px;
 }
 
 .player__button:focus {
@@ -70,6 +71,7 @@ body {
 
 .player__controls {
   display: flex;
+  align-items: center;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -131,6 +133,7 @@ input[type=range] {
   background: transparent;
   width: 100%;
   margin: 0 5px;
+  padding-left: 0;
 }
 
 input[type=range]:focus {
@@ -179,4 +182,15 @@ input[type=range]::-moz-range-thumb {
   border-radius: 50px;
   background: #ffc600;
   cursor: pointer;
+}
+
+/* override flex size for font awesome icons */
+.fa {
+  color: white;;
+  font-size: 12px;
+}
+
+.player__controls label {
+  flex:.07;
+  padding-left: 4px;
 }
