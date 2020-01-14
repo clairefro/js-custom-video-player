@@ -1,5 +1,10 @@
 html {
   box-sizing: border-box;
+  /* disable text selection */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 *, *:before, *:after {
@@ -10,6 +15,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  color: #ffc600;
   background: #7A419B;
   min-height: 100vh;
   background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
@@ -23,7 +29,6 @@ body {
   border: 5px solid rgba(0,0,0,0.2);
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
   position: relative;
-  font-size: 0;
   overflow: hidden;
 }
 
@@ -82,6 +87,11 @@ body {
   height: 15px;
 }
 
+.player:hover .timestamp {
+  display: block;
+  transition: 0.3s;
+}
+
 .player__controls > * {
   flex: 1;
 }
@@ -102,6 +112,19 @@ body {
   background: #ffc600;
   flex: 0;
   flex-basis: 50%;
+}
+
+.timestamp {
+  display: none;
+  font-size: 12px;
+  color: #ffc600;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.6);
+}
+
+.progress__current-time {
+  transform: translateY(-16px) translateX(-16px);
 }
 
 /* unholy css to style input type="range" */

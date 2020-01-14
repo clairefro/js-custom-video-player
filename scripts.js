@@ -6,6 +6,9 @@ const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
+const currentTimestamp = player.querySelector('.progress__current-time');
+const totalDurationTimestamp = player.querySelector('.progress__total-duration');
+const timestamps = player.querySelectorAll('.timestamp');
 
 let mousedown = false;
 
@@ -41,11 +44,29 @@ function handleRangeUpdate(e) {
   // video[this.name] = this.value;
 }
 
+function toHHMMSS(rawSecs) {
+  const roundedSecs = Math.round(parseInt(rawSecs,10));
+  let hours   = Math.floor(roundedSecs / 3600);
+  let minutes = Math.floor((roundedSecs - (hours * 3600)) / 60);
+  let seconds = roundedSecs - (hours * 3600) - (minutes * 60);
+
+  if (minutes < 10) {minutes = "0" + minutes;}
+  if (seconds < 10) {seconds = "0" + seconds;}
+
+  if (hours > 0) {
+    if (hours < 10) {hours = "0" + hours;}
+    return `${hours}:${minutes}:${seconds}`;
+  } else {
+    return `${minutes}:${seconds}`;
+  }
+}
+
 function handleProgress() {
   // find percentage of video watched at current time
   const percent = (video.currentTime / video.duration) * 100;
   // update flex-basis property of div
   progressBar.style.flexBasis = `${percent}%`;
+  currentTimestamp.textContent = toHHMMSS(video.currentTime);
 }
 
 function scrub(e) {
