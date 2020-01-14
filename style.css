@@ -121,9 +121,6 @@ body {
   padding: 2px 4px;
   border-radius: 3px;
   background: rgba(0,0,0,0.6);
-}
-
-.progress__current-time {
   transform: translateY(-16px) translateX(-16px);
 }
 

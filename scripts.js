@@ -6,9 +6,7 @@ const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
-const currentTimestamp = player.querySelector('.progress__current-time');
-const totalDurationTimestamp = player.querySelector('.progress__total-duration');
-const timestamps = player.querySelectorAll('.timestamp');
+const currentTimestamp = player.querySelector('.timestamp');
 
 let mousedown = false;
 
